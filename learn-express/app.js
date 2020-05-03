@@ -13,6 +13,10 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(function(req, res, next) {
+  console.log(req.url, '저도 미들웨이입니다.');
+  next(); // 반드시 미들웨어에서는 next() 함수가 존재 해야한다. 다른 미들웨어들은 내부에 next() 함수가 추가되어 있다.
+});
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
