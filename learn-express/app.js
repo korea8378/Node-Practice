@@ -2,6 +2,8 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var flash = require('connect-flash');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
@@ -18,9 +20,21 @@ app.use(function(req, res, next) {
   next(); // 반드시 미들웨어에서는 next() 함수가 존재 해야한다. 다른 미들웨어들은 내부에 next() 함수가 추가되어 있다.
 });
 app.use(logger('dev'));
+//short : http version, common : time, http version, combined : time, http version, user-agent
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+//body-parser가 express에  내장되어 있음
+app.use(cookieParser('secret code'));
+app.use(session({
+  resave: false,
+  saveUninitalized: false,
+  secret: 'secret code',
+  cookie: {
+    httpOnly: true,
+    secure: false,
+  },
+}));
+app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
