@@ -1,0 +1,28 @@
+{
+  "name": "node_practice",
+  "version": "1.0.0",
+  "description": "노드 연습용",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/korea8378/Node-Practice.git"
+  },
+  "author": "forest.grass",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/korea8378/Node-Practice/issues"
+  },
+  "homepage": "https://github.com/korea8378/Node-Practice#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
